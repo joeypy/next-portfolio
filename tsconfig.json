@@ -6,6 +6,7 @@
       "@/assets/*": ["assets/*"],
       "@/data/*": ["data/*"],
       "@/styles/*": ["styles/*"],
+      "@/app/*": ["app/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -22,6 +23,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "i18n/index.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "i18n/index.js", "styles/global-styles.js"],
   "exclude": ["node_modules"]
 }
