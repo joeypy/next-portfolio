@@ -1,25 +1,34 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-
   :root {
     --header-height: 4.8rem;
     
-    --normal-font-size: 0.938rem;
+    --normal-font-size: 1.4rem;
     --small-font-size: 0.813rem;
     --smaller-font-size: 0.75rem;
     --tiny-font-size: 1rem;
 
     --icon: 1.5rem;
 
-    --hue: 111;
-    --sat: 100%;
-    --lig: 50%;
+    --hue: 100;
+    --hue-dark: 210;
+    --hue-light: 220;
+    --sat: 50%;
+    --lig: 15%;
+    --lig-dark: 100%;
     --font-color-dark: #fff;
     --navbar-color-light: #444444;
     --navbar-color-dark: #fff;
-    /* --navbar-color-dark: hsl(var(--hue), var(--sat), var(--lig)); */
+    --navbar-color-light-active: hsl(var(--hue-light), var(--sat), var(--lig));
+    --navbar-color-dark-active: hsl(var(--hue-dark), var(--sat), var(--lig-dark));
+    --text-color-glow:#eff7ff;
+    --text-glow: 
+      0 0 7px #eff7ff,
+      0 0 10px #eff7ff, 
+      0 0 21px #7ed8fc, 
+      0 0 42px #7ed8fc, 
+      0 0 82px #7ed8fc;
   }
   * {
     box-sizing: border-box;
@@ -66,9 +75,24 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Merriweather', serif;
   }
 
-  /* .active-link {
+  .active-link {
     position: relative;
-    color: var(--font-color-dark);
+    color: ${(props) => props.theme.activeLink};
     transition: .3s
-  } */
+  }
+  @media (min-width: 767px) {
+    .active-link::before {
+      content: '';
+      position: absolute;
+      bottom: .15rem;
+      width: 4px;
+      height: 4px;
+      color: ${(props) => props.theme.activeLink};
+      background: ${(props) => props.theme.activeLink};
+      background-color: ${(props) => props.theme.activeLink};
+      border-radius: 50%;
+      transition: .3s;
+    }
+  }
+
 `;

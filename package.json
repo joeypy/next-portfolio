@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,11 +12,12 @@
     "@emailjs/browser": "^3.7.0",
     "animate.css": "^4.1.1",
     "gsap-trial": "^3.11.0",
+    "i18next": "^21.9.1",
     "loaders.css": "^0.1.2",
     "next": "12.2.5",
-    "next-export-i18n": "^2.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^11.18.5",
     "react-icons": "^4.4.0",
     "react-leaflet": "^4.0.2",
     "react-loaders": "^3.0.1",

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 interface iProps {
@@ -6,6 +7,7 @@ interface iProps {
     icon: JSX.Element;
     label: string;
   };
+  activeLink: string;
 }
 
 const NavLink = styled.a.attrs((props) => ({
@@ -18,29 +20,38 @@ const NavLink = styled.a.attrs((props) => ({
   row-gap: 0.25rem;
   font-weight: 600;
   justify-content: space-around;
-  color: ${(props) => props.theme.activeLink};
+  color: ${(props) => (props.className == 'active-link' ? props.theme.textColorGlow : props.theme.text)};
   transition: 0.3s;
 
   span {
     font-size: var(--tiny-font-size);
+    color: ${(props) => props.className == 'active-link' && props.theme.textColorGlow};
+    text-shadow: ${(props) => props.className == 'active-link' && props.theme.textGlow};
+    font-weight: 500;
+
+    @media screen and (min-width: 767px) {
+      font-size: var(--normal-font-size);
+      font-weight: 700;
+      padding: 1rem;
+    }
   }
 
   svg {
     font-size: 2.4rem;
+
+    @media (min-width: 767px) {
+      display: none;
+    }
   }
 `;
 
-export const NavItem = ({ item }: iProps) => {
+export const NavItem = ({ item, activeLink }: iProps) => {
   return (
     <li key={item.label}>
-      <NavLink href={item.link} className={item.link === '' ? 'active-link' : undefined}>
+      <NavLink href={item.link} className={activeLink == item.link ? 'active-link' : undefined}>
         {item.icon}
         <span>{item.label}</span>
       </NavLink>
-      {/* <a href={item.link} className={item.link === '#home' ? 'nav__link active-link' : 'nav__link'}>
-        {item.icon}
-        <span>{item.label}</span>
-      </a> */}
     </li>
   );
 };

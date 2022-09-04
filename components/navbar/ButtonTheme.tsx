@@ -13,7 +13,7 @@ export const NavButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-background-color: transparent;
+  background-color: transparent;
 `;
 
 const Toggler = styled(NavButton)`

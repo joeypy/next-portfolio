@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import 'animate.css';
 import '../styles/globals.css';
+import '@/i18n/i18n';
 
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '@/components/theme/GlobalStyles';

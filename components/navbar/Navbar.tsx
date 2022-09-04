@@ -3,27 +3,35 @@ import { NavItem } from './NavItem';
 import { ButtonTheme } from './ButtonTheme';
 import styled from 'styled-components';
 import { ToggleLanguage } from '@/components/ToggleLanguage';
+import { useState } from 'react';
 
 const Nav = styled.nav`
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: min(90%, 80rem);
+  margin: 0 auto;
 `;
-
 
 const NavButtons = styled.nav`
   display: flex;
+  align-items: center;
   gap: 1rem;
 `;
 
 const NavList = styled.ul`
   display: flex;
   justify-content: space-around;
+  transition: all 0.3s ease;
 
-  @media screen and (min-width: 576px) {
-    justify-content: center;
+  @media (max-width: 767px) {
     column-gap: 3rem;
+  }
+
+  @media (max-width: 567px) {
+    column-gap: 2rem;
+    justify-content: center;
   }
 `;
 
@@ -32,7 +40,7 @@ const NavMenu = styled.div`
     position: fixed;
     bottom: 0;
     left: 0;
-    background-color: ${(props) => props.theme.navbarBottomColor};
+    background-color: ${(props) => props.theme.navbarBottomBg};
     box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
     width: 100%;
     height: 6.4rem;
@@ -63,6 +71,12 @@ const MainLogo = styled.img.attrs((props) => ({
 `;
 
 export const Navbar = () => {
+  const [activeLink, setActiveLink] = useState('#home');
+
+  const handleOnClick = (link: string) => {
+    setActiveLink(link);
+  };
+
   return (
     <Nav>
       <NavLogo>
@@ -72,7 +86,9 @@ export const Navbar = () => {
       <NavMenu id="nav-menu">
         <NavList>
           {navData.map((data) => (
-            <NavItem key={data.label} item={data} />
+            <div key={data.label} onClick={() => handleOnClick(data.link)}>
+              <NavItem item={data} activeLink={activeLink} />
+            </div>
           ))}
         </NavList>
       </NavMenu>

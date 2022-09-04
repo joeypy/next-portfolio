@@ -1,3 +1,5 @@
+@import url('./tooltip.css');
+
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('/assets/fonts/helvetica-neu.ttf') format('ttf');
@@ -42,3 +44,14 @@ a {
   box-sizing: border-box;
 }
 
+/* Animations */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #095797, 0 0 40px #095797, 0 0 50px #095797, 0 0 60px #095797,
+      0 0 70px #095797;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #4dafff, 0 0 40px #4dafff, 0 0 50px #4dafff, 0 0 60px #4dafff, 0 0 70px #4dafff,
+      0 0 80px #4dafff;
+  }
+}
