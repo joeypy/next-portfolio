@@ -6,5 +6,6 @@ declare module 'styled-components' {
     text?: string;
     headings?: string;
     transitionTime?: string;
+    logo?: string;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { ButtonTheme } from './ButtonTheme';
+import { ButtonTheme } from './navbar/ButtonTheme';
 
 interface Props {
   children: React.ReactNode;

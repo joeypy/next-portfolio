@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import LogoS from '@/assets/images/logo-s.png';
 import LogoSubtitle from '@/assets/images/logo_sub.png';
-import { Nav } from './Nav';
+import { Nav } from './navbar/Navbar';
 
 export const Sidebar = () => {
   return (

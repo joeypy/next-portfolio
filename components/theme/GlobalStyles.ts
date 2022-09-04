@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  :root {
+    --header-height: 4.8rem;
+  }
   * {
     box-sizing: border-box;
     margin: 0;
@@ -13,11 +16,12 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.bodyBg};
     line-height: 1.5;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 300;
     transition: all ${(props) => props.theme.transitionTime};
     margin: 0;
+
     /* font-family: 300 11px/1.4, 'Helvetica Neue', 'sans-serif'; */
     overflow: hidden;
     display: block;
