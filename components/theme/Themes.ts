@@ -1,24 +1,14 @@
-export const base = {
-  breakpoints: ['768px'],
-  space: ['0px', '2px', '4px', '8px', '16px', '32px', '64px'],
-  fonts: {
-    heading: 'Inter, system-ui, sans-serif',
-    body: 'Inter, system-ui, sans-serif',
-  },
-  fontSizes: ['12px', '14px', '16px', '20px', '24px'],
-};
-export const lightTheme = {
-  primary: '#333',
-  background: '#ffffff',
-  nav: '#f8f8f8',
-  border: '#deebf1',
-  text: '#202224',
-};
+import { DefaultTheme } from 'styled-components'
 
-export const darkTheme = {
-  primary: '#ffffff',
-  background: '#333',
-  nav: '#27282b',
-  border: '#303236',
-  text: '#f8f8f8',
-}
+export const lightTheme: DefaultTheme  = {
+  bodyBg: 'white',
+  headings: 'black',
+  text: '#818181',
+  transitionTime: '.25s',
+};
+export const darkTheme: DefaultTheme  = {
+  bodyBg: '#141a2c',
+  headings: 'white',
+  text: '#c1c1c1',
+  transitionTime: '.25s',
+};

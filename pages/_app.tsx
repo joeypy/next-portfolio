@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { AppProps } from 'next/app';
 import 'animate.css';
 import '../styles/globals.css';
 
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '@/components/GlobalStyles';
-import { ObjectKey, ThemePreferenceContext, themesMap } from '@/app/ThemePreferenceContext';
-import { base } from '@/components/theme/Themes';
+import { GlobalStyles } from '@/components/theme/GlobalStyles';
+import { lightTheme, darkTheme } from '@/components/theme/Themes';
+import { themeMode, ThemePreferenceContext } from '@/app/ThemePreferenceContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [currentTheme, setCurrentTheme] = useState('dark');
-  const themeType = currentTheme as ObjectKey;
+  const [currentTheme, setCurrentTheme] = useState<themeMode>('light');
 
-  const theme = { ...base, colors: themesMap[themeType] };
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && savedTheme == 'dark') {
+      setCurrentTheme('dark');
+    } else {
+      setCurrentTheme('light');
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('theme', currentTheme);
+  }, [currentTheme]);
 
   return (
     <>
       <ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
+        <ThemeProvider theme={currentTheme == 'light' ? lightTheme : darkTheme}>
+          <GlobalStyles />
           <Component {...pageProps} />
         </ThemeProvider>
       </ThemePreferenceContext.Provider>

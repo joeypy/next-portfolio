@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 300 11px/1.4, 'Helvetica Neue', 'sans-serif';
+  font: 300 11px/1.4, 'Helvetica Neue', 'sans-serif';
   color: #444;
   background: #022c43;
   overflow: hidden;
@@ -42,12 +42,3 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}

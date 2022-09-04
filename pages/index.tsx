@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div style={{ fontSize: 30, marginLeft: 100 }}>
         <LanguageSwitcher lang="es">es</LanguageSwitcher> | <LanguageSwitcher lang="en">en</LanguageSwitcher>
         <h1>{t('index.test')}</h1>
