@@ -6,6 +6,8 @@ export const lightTheme: DefaultTheme = {
   text: '#818181',
   transitionTime: '.25s',
   logo: './logo-dark.svg',
+  navbarBottomColor: '#fff',
+  activeLink: 'var(--navbar-color-light)',
 };
 
 export const darkTheme: DefaultTheme = {
@@ -14,4 +16,6 @@ export const darkTheme: DefaultTheme = {
   text: '#c1c1c1',
   transitionTime: '.25s',
   logo: './logo-light.svg',
+  navbarBottomColor: '#444444',
+  activeLink: 'var(--navbar-color-dark)',
 };

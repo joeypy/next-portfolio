@@ -18,13 +18,22 @@ const NavLink = styled.a.attrs((props) => ({
   row-gap: 0.25rem;
   font-weight: 600;
   justify-content: space-around;
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.activeLink};
+  transition: 0.3s;
+
+  span {
+    font-size: var(--tiny-font-size);
+  }
+
+  svg {
+    font-size: 2.4rem;
+  }
 `;
 
-export const ListItem = ({ item }: iProps) => {
+export const NavItem = ({ item }: iProps) => {
   return (
     <li key={item.label}>
-      <NavLink href={item.link} className={item.link === '#home' ? 'nav__link active-link' : 'nav__link'}>
+      <NavLink href={item.link} className={item.link === '' ? 'active-link' : undefined}>
         {item.icon}
         <span>{item.label}</span>
       </NavLink>

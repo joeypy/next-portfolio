@@ -7,5 +7,7 @@ declare module 'styled-components' {
     headings?: string;
     transitionTime?: string;
     logo?: string;
+    navbarBottomColor?: string;
+    activeLink?: string;
   }
 }

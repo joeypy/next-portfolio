@@ -1,7 +1,8 @@
 import { navData } from './Navbar.helpers';
-import { ListItem } from './ListItem';
+import { NavItem } from './NavItem';
 import { ButtonTheme } from './ButtonTheme';
 import styled from 'styled-components';
+import { ToggleLanguage } from '@/components/ToggleLanguage';
 
 const Nav = styled.nav`
   height: var(--header-height);
@@ -10,26 +11,40 @@ const Nav = styled.nav`
   align-items: center;
 `;
 
+
+const NavButtons = styled.nav`
+  display: flex;
+  gap: 1rem;
+`;
+
 const NavList = styled.ul`
   display: flex;
+  justify-content: space-around;
+
+  @media screen and (min-width: 576px) {
+    justify-content: center;
+    column-gap: 3rem;
+  }
 `;
 
 const NavMenu = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: var(--container-color);
-  box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
-  width: 100%;
-  height: 4rem;
-  padding: 0 1rem;
-  display: grid;
-  align-content: center;
-  border-radius: 1.25rem 1.25rem 0 0;
-  transition: 0.4s;
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: ${(props) => props.theme.navbarBottomColor};
+    box-shadow: 0 -1px 12px hsla(var(--hue), var(--sat), 15%, 0.15);
+    width: 100%;
+    height: 6.4rem;
+    padding: 0 1rem;
+    display: grid;
+    align-content: center;
+    border-radius: 1.25rem 1.25rem 0 0;
+    transition: 0.4s;
+  }
 `;
 
-const NavLogo = styled.a.attrs(() => ({
+const NavLogo = styled.a.attrs((_) => ({
   href: '#',
 }))`
   display: flex;
@@ -57,12 +72,15 @@ export const Navbar = () => {
       <NavMenu id="nav-menu">
         <NavList>
           {navData.map((data) => (
-            <ListItem key={data.label} item={data} />
+            <NavItem key={data.label} item={data} />
           ))}
         </NavList>
       </NavMenu>
 
-      <ButtonTheme />
+      <NavButtons>
+        <ToggleLanguage />
+        <ButtonTheme />
+      </NavButtons>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       {/* <img src="./perfil.webp" alt="Logo" className="nav__img" width="160" height="40" /> */}
     </Nav>

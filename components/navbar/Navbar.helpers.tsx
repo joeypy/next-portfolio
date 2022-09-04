@@ -9,27 +9,27 @@ interface IDataNavbar {
 export const navData: IDataNavbar[] = [
   {
     link: '#home',
-    icon: <BiHomeAlt className="nav__icon" />,
+    icon: <BiHomeAlt/>,
     label: 'Home',
   },
   {
     link: '#about',
-    icon: <BiUser className="nav__icon" />,
+    icon: <BiUser/>,
     label: 'About',
   },
   {
     link: '#skills',
-    icon: <BiBookAlt className="nav__icon" />,
+    icon: <BiBookAlt/>,
     label: 'Skills',
   },
   {
     link: '#portfolio',
-    icon: <BiBriefcaseAlt className="nav__icon" />,
+    icon: <BiBriefcaseAlt/>,
     label: 'Portfolio',
   },
   {
     link: '#contact',
-    icon: <BiPhoneCall className="nav__icon" />,
+    icon: <BiPhoneCall/>,
     label: 'Hire me',
   },
 ];
