@@ -8,9 +8,24 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '@/components/theme/GlobalStyles';
 import { lightTheme, darkTheme } from '@/components/theme/Themes';
 import { themeMode, ThemePreferenceContext } from '@/app/ThemePreferenceContext';
+import LoadingScreen from '@/components/global/LoadingScreen';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [currentTheme, setCurrentTheme] = useState<themeMode>('light');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('load', (event) => {
+      setLoading(false);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 8000);
+    });
+  }
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -27,12 +42,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
-        <ThemeProvider theme={currentTheme == 'light' ? lightTheme : darkTheme}>
-          <GlobalStyles />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </ThemePreferenceContext.Provider>
+      {!loading ? (
+        <ThemePreferenceContext.Provider value={{ currentTheme, setCurrentTheme }}>
+          <ThemeProvider theme={currentTheme == 'light' ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </ThemePreferenceContext.Provider>
+      ) : (
+        <LoadingScreen />
+      )}
     </>
   );
 }
